@@ -1,0 +1,7 @@
+# Automatically normalize all text files to LF (Linux line endings)
+* text=auto eol=lf
+*.sh text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.json text eol=lf
+*.md text eol=lf

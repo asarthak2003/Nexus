@@ -1,0 +1,9 @@
+# Dependencies
+node_modules/
+dist/
+
+# Environment Variables
+.env
+
+# Local Resources
+rss/

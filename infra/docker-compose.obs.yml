@@ -1,0 +1,39 @@
+# OpenTelemetry Observability Pipeline
+
+services:
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:0.98.0
+    container_name: nexus-otel-collector
+    command: ["--config=/etc/otel-collector-config.yaml"]
+    volumes:
+      - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml:ro
+    environment:
+      - GRAFANA_OTLP_ENDPOINT=${GRAFANA_OTLP_ENDPOINT}
+      - GRAFANA_INSTANCE_ID=${GRAFANA_INSTANCE_ID}
+      - GRAFANA_API_KEY=${GRAFANA_API_KEY}
+    ports:
+      - "4317:4317"  # OTLP gRPC receiver
+      - "4318:4318"  # OTLP HTTP receiver
+      - "8889:8889"  # Prometheus exporter metrics
+    networks:
+      - nexus-net
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:v0.49.1
+    container_name: nexus-cadvisor
+    privileged: true
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    ports:
+      - "8081:8080"
+    networks:
+      - nexus-net
+
+networks:
+  nexus-net:
+    external: true
+    name: infra_nexus-net

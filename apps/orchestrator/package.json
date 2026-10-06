@@ -1,0 +1,26 @@
+{
+  "name": "@nexus/orchestrator",
+  "version": "0.1.0",
+  "description": "Central backend orchestrator for Nexus — manages protocol plugins, benchmark executions, and real-time WebSocket streams.",
+  "main": "./dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@nexus/protocol-core": "*",
+    "fastify": "^5.2.1",
+    "@fastify/cors": "^10.0.2",
+    "@fastify/websocket": "^11.3.3",
+    "zod": "^3.22.4",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "tsx": "^4.7.1",
+    "typescript": "^5.4.5",
+    "@types/node": "^20.11.30",
+    "rimraf": "^5.0.5"
+  }
+}

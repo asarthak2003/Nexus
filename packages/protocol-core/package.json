@@ -8,9 +8,5 @@
     "build": "tsc",
     "dev": "tsc --watch",
     "clean": "rimraf dist"
-  },
-  "devDependencies": {
-    "typescript": "^5.4.5",
-    "rimraf": "^5.0.5"
   }
 }

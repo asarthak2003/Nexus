@@ -1,6 +1,0 @@
-# Allows apps, packages, and protocol modules to import each other locally without publishing.
-
-packages:
-  - "apps/*"
-  - "packages/*"
-  - "protocols/*"

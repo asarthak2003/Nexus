@@ -1,6 +1,11 @@
 # Dependencies
 node_modules/
 dist/
+.next/
+
+# TypeScript & Cache
+.turbo/
+*.tsbuildinfo
 
 # Environment Variables
 .env

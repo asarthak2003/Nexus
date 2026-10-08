@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@nexus/protocol-core": "*",
+    "@nexus/protocol-reqres": "*",
     "fastify": "^5.2.1",
     "@fastify/cors": "^10.0.2",
     "@fastify/websocket": "^11.3.3",

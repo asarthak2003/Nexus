@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package nexus.reqres;
+
+// Benchmark payload matching REST and GraphQL payload schemas for exact byte-for-byte comparison
+message BenchmarkRequest {
+  string id = 1;
+  int64 timestamp_ns = 2;
+  int32 payload_size_bytes = 3;
+  bytes data = 4;
+  map<string, string> metadata = 5;
+}
+
+message BenchmarkResponse {
+  string id = 1;
+  int64 client_timestamp_ns = 2;
+  int64 server_received_timestamp_ns = 3;
+  int64 server_sent_timestamp_ns = 4;
+  int32 payload_size_bytes = 5;
+  bytes data = 6;
+  map<string, string> server_headers = 7;
+}
+
+service EchoBenchmarkService {
+  // Unary gRPC call (1 request -> 1 response)
+  rpc UnaryBenchmark(BenchmarkRequest) returns (BenchmarkResponse);
+}
